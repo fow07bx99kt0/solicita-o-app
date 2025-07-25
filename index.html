@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Corpal Solicitações</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Corpal Solicitações</h1>
+    <div class="icons" id="icons">
+      <div class="icon-card" onclick="loadForm('viagem')">
+        🧳
+        <p>Solicitação de Viagem</p>
+      
+
+
+</div>
+      <div class="icon-card" onclick="loadForm('hospedagem')">
+        🏨
+        <p>Solicitação de Hospedagem</p>
+      </div>
+      <div class="icon-card" onclick="loadForm('inovacao')">
+        💡
+        <p>Solicitação Digital e Inovação</p>
+      </div>
+      <div class="icon-card" onclick="window.open('https://forms.office.com/Pages/ResponsePage.aspx?id=emONPyFz50qudewosdtpDOBfNYYroc1Opt5ttN-afM5UNjVXMU1VQUFWRUFJWFo0UUoxSUVJSjlBTS4u', '_blank')">
+  <img src="caju.png" alt="Ícone Caju" />
+  <p>Solicitação Caju</p>
+</div>
+    
+    
+    <div class="card" onclick="loadForm('cessao')">
+      <p style="font-size: 48px; margin: 0;">📑</p>
+      <p>Solicitação Cessão de Direitos</p>
+    </div>
+
+
+
+
+    </div>
+    <div id="form-container" style="display:none;">
+      <div id="form-header">
+        <button onclick="voltarInicio()" class="back-button">🔄 Nova Solicitação</button>
+      </div>
+      <iframe id="form-frame" src="" allowfullscreen></iframe>
+    </div>
+    <div id="admin-access">
+      <button class="admin-button" onclick="acessoAdmin()">🔐 Acesso Administrador</button>
+    </div>
+  </div>
+  <script src="app.js"></script>
+
+<script>
+  function abrirFormulario(url) {
+    document.getElementById('form-frame').src = url;
+    document.getElementById('form-container').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
