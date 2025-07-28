@@ -10,55 +10,76 @@
 <body>
   <div class="container">
     <h1>Corpal Solicitações</h1>
-    <div class="icons" id="icons">
-      <div class="icon-card" onclick="loadForm('viagem')">
-        🧳
-        <p>Solicitação de Viagem</p>
-      
-
-
-</div>
-      <div class="icon-card" onclick="loadForm('hospedagem')">
-        🏨
-        <p>Solicitação de Hospedagem</p>
-      </div>
-      <div class="icon-card" onclick="loadForm('inovacao')">
-        💡
-        <p>Solicitação Digital e Inovação</p>
-      </div>
-      <div class="icon-card" onclick="window.open('https://forms.office.com/Pages/ResponsePage.aspx?id=emONPyFz50qudewosdtpDOBfNYYroc1Opt5ttN-afM5UNjVXMU1VQUFWRUFJWFo0UUoxSUVJSjlBTS4u', '_blank')">
-  <img src="caju.png" alt="Ícone Caju" />
-  <p>Solicitação Caju</p>
-</div>
-    
-    
-    <div class="card" onclick="loadForm('cessao')">
-      <p style="font-size: 48px; margin: 0;">📑</p>
-      <p>Solicitação Cessão de Direitos</p>
+    <div class="icons" id="icons" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+      <div class="icon-card" onclick="loadForm('viagem')">🧳<p>Solicitação de Viagem</p></div>
+      <div class="icon-card" onclick="loadForm('hospedagem')">🏨<p>Solicitação de Hospedagem</p></div>
+      <div class="icon-card" onclick="loadForm('inovacao')">💡<p>Solicitação Digital e Inovação</p></div>
+      <div class="icon-card" onclick="loadForm('veiculo')">🚗<p>Solicitação de Veículo</p></div>
+      <div class="icon-card" onclick="loadForm('caju')"><img src="caju.png" alt="Ícone Caju" /><p>Solicitação Caju</p></div>
+      <div class="icon-card" onclick="loadForm('cessao')">📑<p>Solicitação Cessão de Direitos</p></div>
     </div>
 
-
-
-
-    </div>
     <div id="form-container" style="display:none;">
       <div id="form-header">
         <button onclick="voltarInicio()" class="back-button">🔄 Nova Solicitação</button>
       </div>
-      <iframe id="form-frame" src="" allowfullscreen></iframe>
+      <iframe id="form-frame" src="" width="100%" height="600px" frameborder="0" allowfullscreen></iframe>
     </div>
-    <div id="admin-access">
+
+    <div id="admin-access" style="margin-top: 20px;">
       <button class="admin-button" onclick="acessoAdmin()">🔐 Acesso Administrador</button>
     </div>
   </div>
-  <script src="app.js"></script>
 
-<script>
-  function abrirFormulario(url) {
-    document.getElementById('form-frame').src = url;
-    document.getElementById('form-container').style.display = 'block';
+  <script>
+
+function loadForm(type) {
+  const icons = document.getElementById("icons");
+  const formContainer = document.getElementById("form-container");
+  const iframe = document.getElementById("form-frame");
+  let url = "";
+
+  switch (type) {
+    case "viagem":
+      url = "https://forms.office.com/pages/responsepage.aspx?id=emONPyFz50qudewosdtpDEK_Qs0Wl59OqI5w8rrHBSlUNjZYRUdHUEtKNUNDSEYyV001TE9VU0ZUVy4u&origin=lprLink&route=shorturl";
+      break;
+    case "hospedagem":
+      url = "https://forms.office.com/pages/responsepage.aspx?id=emONPyFz50qudewosdtpDEK_Qs0Wl59OqI5w8rrHBSlUNDcxRlZHRzBKMjVJM1lWVFc4UU8zOUc0SS4u&origin=lprLink&route=shorturl";
+      break;
+    case "inovacao":
+      url = "https://forms.office.com/Pages/ResponsePage.aspx?id=emONPyFz50qudewosdtpDCPJHkcW2CpMmyPiHvcb7dFUOUxBVkkzTExFVlZSWVNETjVSMkw5MDZJRi4u";
+      break;
+    case "veiculo":
+      url = "https://forms.office.com/pages/responsepage.aspx?id=emONPyFz50qudewosdtpDEK_Qs0Wl59OqI5w8rrHBSlUMkUyOUNWVTVBQ1hHMUtDMkIwTUU0TUZTQi4u&origin=lprLink&route=shorturl";
+      break;
+    case "cessao":
+      url = "https://form.jotform.com/252023929762056";
+      break;
+    case "caju":
+      window.open("https://forms.office.com/Pages/ResponsePage.aspx?id=emONPyFz50qudewosdtpDOBfNYYroc1Opt5ttN-afM5UNjVXMU1VQUFWRUFJWFo0UUoxSUVJSjlBTS4u", "_blank");
+      return;
   }
-</script>
 
+  icons.style.display = "none";
+  formContainer.style.display = "block";
+  iframe.src = url;
+}
+
+function voltarInicio() {
+  const form = document.getElementById('form-frame');
+  form.src = "";
+  document.getElementById('form-container').style.display = 'none';
+  document.getElementById('icons').style.display = 'flex';
+}
+
+function acessoAdmin() {
+  const senha = prompt("Digite a senha de administrador:");
+  if (senha === "corpal2025") {
+    window.location.href = "painel.html";
+  } else if (senha !== null) {
+    alert("Senha incorreta. Acesso negado.");
+  }
+}
+  </script>
 </body>
 </html>
