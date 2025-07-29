@@ -1,0 +1,1 @@
+// Função movida para inline no HTML para evitar conflitos
